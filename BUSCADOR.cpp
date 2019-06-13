@@ -38,13 +38,13 @@ namespace Maquina_de_busca
 
                         for(vector<string>::iterator palavra = palavras.begin(); palavra != palavras.end(); ++palavra)
                         {
-                            map<string, vector<string>>::iterator eBook = Arquivo::indiceInvertido.find(*palavra);
-                                if(eBook != Arquivo::indiceInvertido.end())
+                            map<string, vector<string>>::iterator Key = Arquivo::indiceInvertido.find(*palavra);
+                                if(Key != Arquivo::indiceInvertido.end())
                                 {
-                                    if(std::find(eBook->second.begin(), eBook->second.end(), this->nomeArquivo) == eBook->second.end())
+                                    if(std::find(Key->second.begin(), Key->second.end(), this->nomeArquivo) == Key->second.end())
                                     {
-                                        vector<string>::iterator caminhoArquivo = eBook->second.end();
-                                        eBook->second.insert(caminhoArquivo, this->nomeArquivo);
+                                        vector<string>::iterator caminhoArquivo = Key->second.end();
+                                        Key->second.insert(caminhoArquivo, this->nomeArquivo);
                                     }
                                 } else {
                                         vector<string> novoValor {this->nomeArquivo};
